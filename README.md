@@ -10,7 +10,7 @@
 
 ---
 
-<video src="trylapse-demo.mp4" controls autoplay loop muted playsinline width="100%"></video>
+<video src="https://github.com/0sparsh2/trylapse-demo/raw/main/trylapse-demo.mp4" controls autoplay loop muted playsinline width="100%"></video>
 
 ---
 
