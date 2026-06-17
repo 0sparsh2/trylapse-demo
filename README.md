@@ -10,7 +10,14 @@
 
 ---
 
+![TryLapse Command Center — readiness score 73/100, situation report, recent runs, stat cards](https://github.com/0sparsh2/trylapse-demo/releases/download/v1.0/dashboard.png)
+
+<details>
+<summary>▶ Watch the 45-second demo (MP4)</summary>
+
 <video src="https://github.com/0sparsh2/trylapse-demo/releases/download/v1.0/trylapse-demo.mp4" controls autoplay loop muted playsinline width="100%"></video>
+
+</details>
 
 ---
 
