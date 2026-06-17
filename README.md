@@ -10,7 +10,7 @@
 
 ---
 
-<video src="https://github.com/0sparsh2/trylapse-demo/raw/main/trylapse-demo.mp4" controls autoplay loop muted playsinline width="100%"></video>
+<video src="https://github.com/0sparsh2/trylapse-demo/releases/download/v1.0/trylapse-demo.mp4" controls autoplay loop muted playsinline width="100%"></video>
 
 ---
 
@@ -108,18 +108,17 @@ If an agent cannot produce this evidence, it does not file the issue.
 
 ---
 
-## Getting Started
+## Status
 
-```bash
-git clone https://github.com/trylapse/trylapse.git
-cd trylapse/launch-rehearsal
+**TryLapse is currently in private development.** The source code is in a private repository. Public access and launch are coming soon.
 
-python -m venv .venv && source .venv/bin/activate
-pip install -e .
-playwright install chromium
-```
+If you're interested in early access or want to talk about integrating pre-launch rehearsal into your shipping workflow, reach out at [trylapse.dev](https://trylapse.dev).
 
-Write a config:
+---
+
+## What Running It Looks Like
+
+When you do run it, the interface is a simple config file:
 
 ```yaml
 # my-app.yaml
@@ -143,18 +142,13 @@ journeys:
     start_url: "/products"
 ```
 
-Run:
+Then a single command:
 
 ```bash
 rehearse run -c my-app.yaml -o artifacts
-
-# With LLM-enhanced analysis (optional, significant quality improvement)
-DEEPSEEK_API_KEY=sk-... rehearse run -c my-app.yaml -o artifacts --llm
-
-# Launch the dashboard
-rehearse serve -o artifacts
-# → http://127.0.0.1:8765
 ```
+
+Output: a readiness score, a blocker list with evidence, and a dashboard at `localhost:8765`.
 
 ---
 
@@ -173,33 +167,6 @@ rehearse serve -o artifacts
 - Perfectly accurate — agents can misinterpret UI elements; reports should be reviewed before filing tickets
 
 The right mental model: a teammate who runs through your product before every release, files detailed bug reports, and gives you a confidence score. Faster than a human, works at 3am, costs $0.03 per run. Occasionally misreads a disabled button as a blocker. Needs human review before acting on findings.
-
----
-
-## LLM Support
-
-LLM analysis is opt-in. Any OpenAI-compatible endpoint works.
-
-| Provider | Set |
-|---|---|
-| DeepSeek (recommended) | `DEEPSEEK_API_KEY=sk-...` |
-| NVIDIA NIM | `NVIDIA_NIM_API_KEY=nvapi-...` |
-| OpenAI | `OPENAI_API_KEY=sk-...` |
-| Any OpenAI-compatible | `REHEARSE_LLM_API_KEY`, `REHEARSE_LLM_BASE_URL`, `REHEARSE_LLM_MODEL` |
-
----
-
-## CI Integration
-
-```yaml
-# .github/workflows/rehearsal.yml
-- name: TryLapse rehearsal
-  run: rehearse run -c app.yaml -o artifacts --llm
-  env:
-    DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
-```
-
-`rehearse run` exits 0 on Green band, non-zero on Amber or Red.
 
 ---
 
