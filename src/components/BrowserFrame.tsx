@@ -1,0 +1,95 @@
+import React from 'react';
+import { C } from '../theme';
+
+interface BrowserFrameProps {
+  children: React.ReactNode;
+  url?: string;
+  style?: React.CSSProperties;
+}
+
+export const BrowserFrame: React.FC<BrowserFrameProps> = ({
+  children,
+  url = 'app.trylapse.dev',
+  style = {},
+}) => {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        borderRadius: 12,
+        overflow: 'hidden',
+        border: `1px solid ${C.borderStrong}`,
+        boxShadow: '0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04)',
+        ...style,
+      }}
+    >
+      {/* Toolbar */}
+      <div
+        style={{
+          background: '#1a1a2e',
+          borderBottom: `1px solid ${C.border}`,
+          height: 40,
+          display: 'flex',
+          alignItems: 'center',
+          paddingLeft: 16,
+          paddingRight: 16,
+          gap: 16,
+          flexShrink: 0,
+        }}
+      >
+        {/* Traffic lights */}
+        <div style={{ display: 'flex', gap: 7 }}>
+          <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#ff5f57', border: '1px solid rgba(0,0,0,0.2)' }} />
+          <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#febc2e', border: '1px solid rgba(0,0,0,0.2)' }} />
+          <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#28c840', border: '1px solid rgba(0,0,0,0.2)' }} />
+        </div>
+
+        {/* Nav arrows */}
+        <div style={{ display: 'flex', gap: 8, color: 'rgba(255,255,255,0.3)' }}>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.4 }}>
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </div>
+
+        {/* URL bar */}
+        <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
+          <div
+            style={{
+              background: 'rgba(255,255,255,0.05)',
+              border: `1px solid ${C.border}`,
+              borderRadius: 6,
+              height: 24,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              paddingLeft: 12,
+              paddingRight: 12,
+              gap: 6,
+              width: '100%',
+              maxWidth: 420,
+            }}
+          >
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            <span style={{ fontFamily: C.mono, fontSize: 11, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.01em' }}>
+              {url}
+            </span>
+          </div>
+        </div>
+
+        <div style={{ width: 60 }} />
+      </div>
+
+      {/* Content */}
+      <div style={{ flex: 1, position: 'relative', overflow: 'hidden', background: C.bg }}>
+        {children}
+      </div>
+    </div>
+  );
+};
