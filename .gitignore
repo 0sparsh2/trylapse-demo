@@ -1,9 +1,0 @@
-node_modules/
-out/
-.remotion/
-*.mp4
-*.gif
-*.webm
-*.mov
-.env
-.DS_Store
