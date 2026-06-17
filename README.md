@@ -15,8 +15,9 @@
 <details>
 <summary>▶ Watch the 45-second demo (MP4)</summary>
 
-<video src="https://github.com/0sparsh2/trylapse-demo/trylapse-demo.mp4" controls autoplay loop muted playsinline width="100%"></video>
-
+<p align="center" width="100%">
+<video src="https://github.com/0sparsh2/trylapse-demo/trylapse-demo.mp4" controls autoplay loop muted playsinline width="100%"</video>
+</p>
 </details>
 
 ---
